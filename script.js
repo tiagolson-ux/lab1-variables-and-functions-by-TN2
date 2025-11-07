@@ -47,3 +47,19 @@ console.log(calculateTotalCost(10, 3, 0.07));     // Expected: 32.1
 console.log(calculateTotalCost(19.99, 2, 0.06));  // Expected: 42.38
 console.log(calculateTotalCost("x", 2, 0.06));    // Expected: "Nope Invalid input????."
 
+// ---------- Task 3 ----------
+const checkEligibility = (age, isEmployed) => {
+  if (!isValidNumber(age) || typeof isEmployed !== 'boolean') {
+    return "Invalid input.";
+  }
+  if (age > 18 && isEmployed) return "Eligible";
+  if (age > 18 && !isEmployed) return "Conditionally eligible";
+  return "Not eligible";
+};
+
+// ---------- Quick tests (Task 3) ----------
+console.log("\n=== Task 3 ===");
+console.log(checkEligibility(25, true));    // Expected: " Yep Eligible"
+console.log(checkEligibility(25, false));   // Expected: "Conditionally eligible"
+console.log(checkEligibility(18, true));    // Expected: "Nope Not eligible"
+console.log(checkEligibility("18", true));  // Expected: "Invalid input."
