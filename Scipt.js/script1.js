@@ -50,9 +50,35 @@ const checkEligibility = (age, isEmployed) => {
   return "Not eligible";
 };
 
-// ✅ Tester
+// Tester
 console.log("\n=== Task 3 Test ===");
 console.log(checkEligibility(25, true));    // reslt: "Eligible"
 console.log(checkEligibility(25, false));   // result: "Conditionally eligible"
 console.log(checkEligibility(18, true));    // result: "Not eligible"
 console.log(checkEligibility("18", true));  // result: "Invalid input."
+
+
+/** Task 4: calculateTotalCostV2 (adds discount) */
+const calculateTotalCostV2 = (price, quantity, taxRate, discount = 0) => {
+  if (
+    !isValidNumber(price) ||
+    !isValidNumber(quantity) ||
+    !isValidNumber(taxRate) ||
+    !isValidNumber(discount) ||
+    discount < 0
+  ) {
+    return "Invalid input.";
+  }
+
+  const subtotal = price * quantity;
+  const taxableBase = Math.max(subtotal - discount, 0);
+  const total = taxableBase * (1 + taxRate);
+  return Number(total.toFixed(2));
+};
+
+// Testing out
+console.log("\n=== Task 4 Test ===");
+console.log(calculateTotalCostV2(50, 2, 0.08, 10)); // result: 86.4
+console.log(calculateTotalCostV2(20, 1, 0.1));      // result: 22
+console.log(calculateTotalCostV2(10, 2, 0.05, -1)); // result: "Invalid input."
+console.log(calculateTotalCostV2(5, 1, 0.07, 10));  // result: 0
