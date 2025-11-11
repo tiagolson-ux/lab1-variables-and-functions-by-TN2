@@ -39,3 +39,20 @@ console.log(calculateTotalCost(10, 3, 0.07));     // result: 32.1
 console.log(calculateTotalCost(19.99, 2, 0.06));  // result: 42.38
 console.log(calculateTotalCost("x", 2, 0.06));    // result: "Invalid input."
 
+/** Task3: checkEligibility */
+const checkEligibility = (age, isEmployed) => {
+  if (!isValidNumber(age) || typeof isEmployed) {
+    return "Invalid input.";
+  }
+
+  if (age > 18 && isEmployed) return "Eligible";
+  if (age > 18 && !isEmployed) return "Conditional eligible";
+  return "Not eligible";
+};
+
+// ✅ Tester
+console.log("\n=== Task 3 Test ===");
+console.log(checkEligibility(25, true));    // reslt: "Eligible"
+console.log(checkEligibility(25, false));   // result: "Conditionally eligible"
+console.log(checkEligibility(18, true));    // result: "Not eligible"
+console.log(checkEligibility("18", true));  // result: "Invalid input."
